@@ -21,12 +21,12 @@ public class MusicPicker implements ActionListener{
 	static Path path = Paths.get("D:\\Music");
 	static java.util.List<String> completeSongs;
 	static JButton button1, button2, button3, button4;
-	static JLabel tf, randomDesc;
-	static JTextField rf = new JTextField("");
+	static JLabel tf, randomDesc, option1;
+	static JTextField rf;
 	static JMenuBar mb;
 	static JMenu menu;
 	static JMenuItem options, exit;
-	static JFrame frame;
+	static JFrame frame, optionFrame;
 
 	
 	@Override
@@ -40,13 +40,19 @@ public class MusicPicker implements ActionListener{
 		addFunctions();
 		frame.pack();
         frame.setVisible(true);
-	}		
+	}	
+
+	public static void createOptionGUI(){
+		optionFrame = new JFrame("Options");
+        addOptions(optionFrame.getContentPane());
+		optionFrame.pack();
+        optionFrame.setVisible(true);
+	}	
 	
 	public static void addComponentsToPane(Container pane) {
         if (RIGHT_TO_LEFT) {
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         }
- 
 		pane.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		if (shouldFill) {
@@ -135,6 +141,21 @@ public class MusicPicker implements ActionListener{
 		c.gridy = 5;       
 		pane.add(rf, c);
 	}
+	
+	public static void addOptions(Container pane){
+		if (RIGHT_TO_LEFT) {
+            pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+        }
+		pane.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		if (shouldFill) {
+			c.fill = GridBagConstraints.BOTH;
+		}
+		
+		option1 = new JLabel("Options");
+		pane.add(option1, c);
+	}
+	
 	//////////////////////////Button Logic//////////////////////////
 	public static void addFunctions(){
 		button1.addActionListener(new ActionListener(){  
@@ -179,6 +200,11 @@ public class MusicPicker implements ActionListener{
 			}
 		});
 		////////Menu Functions/////////////
+		options.addActionListener(new ActionListener(){  
+			public void actionPerformed(ActionEvent e){ 
+				createOptionGUI();
+			}  
+		}); 
 		exit.addActionListener(new ActionListener(){  
 			public void actionPerformed(ActionEvent e){ 
 				frame.setVisible(false);
