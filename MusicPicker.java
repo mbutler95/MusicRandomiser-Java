@@ -26,14 +26,15 @@ public class MusicPicker implements ActionListener{
 	static JMenuBar mb;
 	static JMenu menu;
 	static JMenuItem options, exit;
-	
+	static JFrame frame;
+
 	
 	@Override
     public void actionPerformed(ActionEvent ae) {
         }
 	
 	public static void createGUI(){
-		JFrame frame = new JFrame("Music Selector");
+		frame = new JFrame("Music Selector");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		addComponentsToPane(frame.getContentPane());
 		addFunctions();
@@ -177,6 +178,13 @@ public class MusicPicker implements ActionListener{
 				rf.setText("");
 			}
 		});
+		////////Menu Functions/////////////
+		exit.addActionListener(new ActionListener(){  
+			public void actionPerformed(ActionEvent e){ 
+				frame.setVisible(false);
+				frame.dispose();
+			}  
+		}); 
 	}
 	
 		
