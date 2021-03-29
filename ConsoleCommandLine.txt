@@ -1,2 +1,2 @@
 javac MusicPickerLib/MusicPicker.java
--jar cfmv MusicPicker.jar MusicPickerLib/MANIFEST.txt MusicPickerLib/*.class
+jar cfmv MusicPicker.jar MusicPickerLib/MANIFEST.txt MusicPickerLib/*.class

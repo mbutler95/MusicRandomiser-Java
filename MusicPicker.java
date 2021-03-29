@@ -23,6 +23,10 @@ public class MusicPicker implements ActionListener{
 	static JButton button1, button2, button3, button4;
 	static JLabel tf, randomDesc;
 	static JTextField rf = new JTextField("");
+	static JMenuBar mb;
+	static JMenu menu;
+	static JMenuItem options, exit;
+	
 	
 	@Override
     public void actionPerformed(ActionEvent ae) {
@@ -42,78 +46,93 @@ public class MusicPicker implements ActionListener{
             pane.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
         }
  
-    pane.setLayout(new GridBagLayout());
-    GridBagConstraints c = new GridBagConstraints();
-    if (shouldFill) {
-    //natural height, maximum width
-    c.fill = GridBagConstraints.BOTH;
-    }
+		pane.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		if (shouldFill) {
+			c.fill = GridBagConstraints.BOTH;
+		}
+	
+		menu = new JMenu("Menu");
+		options = new JMenuItem("Options");
+		exit = new JMenuItem("Exit");
+		menu.add(options);
+		menu.add(exit);
+		
+		mb = new JMenuBar();
+		mb.setBackground(new Color(0xb0d4d4));
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridwidth = 2;
+		mb.add(menu);
+		pane.add(mb, c);
  
-    button1 = new JButton("Random Band");
-	c.ipady = 30;      
-	c.ipadx = 100;
-    c.weightx = 0.5;
-    c.fill = GridBagConstraints.BOTH;
-    c.gridx = 0;
-    c.gridy = 0;
-    pane.add(button1, c);
+		button1 = new JButton("Random Band");
+		c.ipady = 30;      
+		c.ipadx = 100;
+		c.weightx = 0.5;
+		c.gridwidth = 1;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;
+		c.gridy = 1;
+		pane.add(button1, c);
 	
-	button2 = new JButton("Random Album");
-	c.ipady = 30;      
-	c.ipadx = 100;
-    c.weightx = 0.5;
-	c.fill = GridBagConstraints.BOTH;
-    c.gridx = 1;
-    c.gridy = 0;
-    pane.add(button2, c);
+		button2 = new JButton("Random Album");
+		c.ipady = 30;      
+		c.ipadx = 100;
+		c.weightx = 0.5;
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 1;
+		c.gridy = 1;
+		pane.add(button2, c);
  
-    button3 = new JButton("Play");
-    c.fill = GridBagConstraints.BOTH;
-    c.ipady = 50;      //make this component tall
-	c.ipadx = 100;
-    c.weightx = 0.0;
-    c.gridwidth = 2;
-    c.gridx = 0;
-    c.gridy = 2;
-    pane.add(button3, c);
+		button3 = new JButton("Play");
+		c.fill = GridBagConstraints.BOTH;
+		c.ipady = 50;      
+		c.ipadx = 100;
+		c.weightx = 1;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 3;
+		pane.add(button3, c);
 	
 	
-    tf = new JLabel("",SwingConstants.CENTER);
-	c.fill = GridBagConstraints.BOTH;
-    c.ipady = 15;       //reset to default
-    c.weighty = 1;   //request any extra vertical space
-    c.insets = new Insets(5,0,5,0);  //top padding
-    c.gridx = 0;       //aligned with button 2
-    c.gridwidth = 2;   //2 columns wide
-    c.gridy = 1;       //third row
-    pane.add(tf, c);
+		tf = new JLabel(" ",SwingConstants.CENTER);
+		c.fill = GridBagConstraints.BOTH;
+		c.ipady = 10;       
+		c.weighty = 1;   
+		c.insets = new Insets(5,0,5,0); 
+		c.gridx = 0;       
+		c.gridwidth = 2;   
+		c.gridy = 2;       
+		pane.add(tf, c);
 	
-	button4 = new JButton("Play Random");
-    c.fill = GridBagConstraints.BOTH;
-    c.ipady = 20;      
-	c.ipadx = 50;
-    c.weightx = 0.0;
-    c.gridwidth = 2;
-    c.gridx = 0;
-    c.gridy = 3;
-    pane.add(button4, c);
+		button4 = new JButton("Play Random");
+		c.fill = GridBagConstraints.BOTH;
+		c.ipady = 20;      
+		c.ipadx = 50;
+		c.weightx = 0.0;
+		c.gridwidth = 2;
+		c.gridx = 0;
+		c.gridy = 4;
+		pane.add(button4, c);
 	
-	randomDesc = new JLabel("Random Amount to Played:", SwingConstants.CENTER);
-	c.fill = GridBagConstraints.BOTH;
-	c.gridx = 0;       
-    c.gridwidth = 1;   
-    c.gridy = 4;
-	pane.add(randomDesc, c);
-	
-	rf = new JTextField("0");
-	rf.setHorizontalAlignment(JTextField.CENTER);
-    c.fill = GridBagConstraints.BOTH;
-	c.insets = new Insets(0,0,0,0);
-    c.weighty = 1;   //request any extra vertical space
-    c.gridx = 1;       
-    c.gridwidth = 1;   
-    c.gridy = 4;       
-    pane.add(rf, c);
+		randomDesc = new JLabel("Random Amount to Played:", SwingConstants.CENTER);
+		c.fill = GridBagConstraints.BOTH;
+		c.gridx = 0;       
+		c.gridwidth = 1;   
+		c.gridy = 5;
+		pane.add(randomDesc, c);
+		
+		rf = new JTextField("0");
+		rf.setHorizontalAlignment(JTextField.CENTER);
+		c.fill = GridBagConstraints.BOTH;
+		c.insets = new Insets(0,0,0,0);
+		c.weighty = 1;   
+		c.gridx = 1;       
+		c.gridwidth = 1;   
+		c.gridy = 5;       
+		pane.add(rf, c);
 	}
 	//////////////////////////Button Logic//////////////////////////
 	public static void addFunctions(){
